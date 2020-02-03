@@ -6,7 +6,6 @@ var WIZARD_COAT_COLORS = ['rgb(101,137,164)', 'rgb(241,43,107)', 'rgb(146,100,16
 var WIZARD_EYES_COLORS = ['black', 'red', 'blue', 'yellow', 'green'];
 var FIREBALL_COLORS = ['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848'];
 var WIZARDS_NUMBER = 4;
-var MIN_NAME_LENGTH = 2;
 var ESC_KEY = 'Escape';
 var ENTER_KEY = 'Enter';
 
