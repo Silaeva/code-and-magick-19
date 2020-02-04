@@ -67,16 +67,9 @@ var popupEscPressHandler = function (evt) {
 var openPopup = function () {
   setup.classList.remove('hidden');
   document.addEventListener('keydown', popupEscPressHandler);
-  setupWizardCoatColor.addEventListener('click', function () {
-    coatColorChangeHandler();
-  });
-  setupWizardEyesColor.addEventListener('click', function () {
-    eyesColorChangeHandler();
-  });
-
-  setupFireballColor.addEventListener('click', function () {
-    fireballChangeHandler();
-  });
+  setupWizardCoatColor.addEventListener('click', coatColorChangeHandler);
+  setupWizardEyesColor.addEventListener('click', eyesColorChangeHandler);
+  setupFireballColor.addEventListener('click', fireballChangeHandler);
 };
 
 var closePopup = function () {
