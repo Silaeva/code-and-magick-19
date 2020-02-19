@@ -49,6 +49,10 @@
 
   var userNameInput = setup.querySelector('.setup-user-name');
 
+  userNameInput.addEventListener('input', function (evt) {
+    evt.target.setCustomValidity('');
+  });
+
   userNameInput.addEventListener('invalid', function () {
     if (userNameInput.validity.tooShort) {
       userNameInput.setCustomValidity('Имя должно состоять минимум из 2-х символов');
