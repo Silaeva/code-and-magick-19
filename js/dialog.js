@@ -2,6 +2,8 @@
 
 (function () {
   var FIREBALL_COLORS = ['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848'];
+  var WIZARD_COAT_COLORS = ['rgb(101,137,164)', 'rgb(241,43,107)', 'rgb(146,100,161)', 'rgb(56,159,117)', 'rgb(215,210,55)', 'rgb(0,0,0)'];
+  var WIZARD_EYES_COLORS = ['black', 'red', 'blue', 'yellow', 'green'];
 
   var setup = document.querySelector('.setup');
   var setupOpen = document.querySelector('.setup-open');
@@ -49,6 +51,10 @@
 
   var userNameInput = setup.querySelector('.setup-user-name');
 
+  userNameInput.addEventListener('input', function (evt) {
+    evt.target.setCustomValidity('');
+  });
+
   userNameInput.addEventListener('invalid', function () {
     if (userNameInput.validity.tooShort) {
       userNameInput.setCustomValidity('Имя должно состоять минимум из 2-х символов');
@@ -64,12 +70,12 @@
   var setupFireballColor = setup.querySelector('.setup-fireball-wrap');
 
   var coatColorChangeHandler = function () {
-    setupWizardCoatColor.style.fill = window.util.getRandomElement(window.setup.WIZARD_COAT_COLORS);
+    setupWizardCoatColor.style.fill = window.util.getRandomElement(WIZARD_COAT_COLORS);
     setup.querySelector('input[name="coat-color"]').value = setupWizardCoatColor.style.fill;
   };
 
   var eyesColorChangeHandler = function () {
-    setupWizardEyesColor.style.fill = window.util.getRandomElement(window.setup.WIZARD_EYES_COLORS);
+    setupWizardEyesColor.style.fill = window.util.getRandomElement(WIZARD_EYES_COLORS);
     setup.querySelector('input[name="eyes-color"]').value = setupWizardEyesColor.style.fill;
   };
 
@@ -130,4 +136,18 @@
     document.addEventListener('mousemove', dialogMouseMoveHandler);
     document.addEventListener('mouseup', dialogMouseUpHandler);
   });
+
+  // 6.1
+
+  var form = setup.querySelector('.setup-wizard-form');
+
+  var successHandler = function () {
+    setup.classList.add('hidden');
+  };
+
+  form.addEventListener('submit', function (evt) {
+    window.backend.save(new FormData(form), successHandler, window.setup.errorHandler);
+    evt.preventDefault();
+  });
+
 })();
