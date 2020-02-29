@@ -1,8 +1,8 @@
 'use strict';
 
 (function () {
-  var URL_POST = 'https://js.dump.academy/code-and-magick'; // save
-  var URL_GET = 'https://js.dump.academy/code-and-magick/data'; // load
+  var URL_POST = 'https://js.dump.academy/code-and-magick';
+  var URL_GET = 'https://js.dump.academy/code-and-magick/data';
   var StatusCode = {
     OK: 200
   };
