@@ -39,15 +39,15 @@
     }));
   };
 
-  window.wizard.wizard.onEyesChange = function (color) {
+  window.wizard.wizard.onEyesChange = window.debounce.debounce(function (color) {
     eyesColor = color;
-    window.debounce.debounce(updateWizards);
-  };
+    updateWizards();
+  });
 
-  window.wizard.wizard.onCoatChange = function (color) {
+  window.wizard.wizard.onCoatChange = window.debounce.debounce(function (color) {
     coatColor = color;
-    window.debounce.debounce(updateWizards);
-  };
+    updateWizards();
+  });
 
   var successHandler = function (data) {
     wizards = data;
