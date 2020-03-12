@@ -2,12 +2,11 @@
 
 (function () {
   var FIREBALL_COLORS = ['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848'];
-  // var WIZARD_COAT_COLORS = ['rgb(101,137,164)', 'rgb(241,43,107)', 'rgb(146,100,161)', 'rgb(56,159,117)', 'rgb(215,210,55)', 'rgb(0,0,0)'];
-  // var WIZARD_EYES_COLORS = ['black', 'red', 'blue', 'yellow', 'green'];
 
   var setup = document.querySelector('.setup');
   var setupOpen = document.querySelector('.setup-open');
   var setupClose = setup.querySelector('.setup-close');
+  var fileChooserElement = setup.querySelector('.upload input[type=file]');
   var defaultSetupPositionY = setup.style.top;
   var defaultSetupPositionX = setup.style.left;
 
@@ -18,17 +17,14 @@
   var openPopup = function () {
     setup.classList.remove('hidden');
     document.addEventListener('keydown', popupEscPressHandler);
-    // setupWizardCoatColor.addEventListener('click', coatColorChangeHandler);
-    // setupWizardEyesColor.addEventListener('click', eyesColorChangeHandler);
     setupFireballColor.addEventListener('click', fireballChangeHandler);
   };
 
   var closePopup = function () {
     setup.classList.add('hidden');
     document.removeEventListener('keydown', popupEscPressHandler);
-    // setupWizardCoatColor.removeEventListener('click', coatColorChangeHandler);
-    // setupWizardEyesColor.removeEventListener('click', eyesColorChangeHandler);
     setupFireballColor.removeEventListener('click', fireballChangeHandler);
+    fileChooserElement.removeEventListener('change', window.avatar.fileChangeHandler);
     setup.style.top = defaultSetupPositionY;
     setup.style.left = defaultSetupPositionX;
   };
